@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class App {
+    // создаем генерики для позиций игрока и компьютера
     static ArrayList<Integer> playerPositions = new ArrayList<Integer>();
     static ArrayList<Integer> cpuPositions = new ArrayList<Integer>();
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class App {
                 { ' ', '|', ' ', '|', ' ' },
                 { '-', '+', '-', '+', '-' },
                 { ' ', '|', ' ', '|', ' ' } };
-
+        // создаем цикл для ввода координаты в поле
         while (true) {
             Scanner scan = new Scanner(System.in);
             System.out.println("Enter placements 1-9");
@@ -23,7 +24,7 @@ public class App {
                 playerpos = scan.nextInt();
             }
 
-
+            // ход игрока
             System.out.println(playerpos);
             String result = checkWin();
 
@@ -32,6 +33,7 @@ public class App {
                 System.out.println(result);
                 break;
             }
+            // ход компьютера
             Random rand = new Random();
             int cpupos = rand.nextInt(9) + 1;
             while(playerPositions.contains(cpupos)|| cpuPositions.contains(cpupos)){
@@ -100,7 +102,7 @@ public class App {
                 break;
         }
     }
-
+    // создаем массивы для проверки победы
     public static String checkWin() {
         List topRow = Arrays.asList(1, 2, 3);
         List midRow = Arrays.asList(4, 5, 6);
@@ -113,6 +115,7 @@ public class App {
         List cross1 = Arrays.asList(1, 5, 9);
         List cross2 = Arrays.asList(7, 5, 3);
 
+        // добавляем значения в новый массив
         List<List> winningConditions = new ArrayList<List>();
         winningConditions.add(topRow);
         winningConditions.add(midRow);
